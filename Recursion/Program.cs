@@ -26,16 +26,19 @@ namespace FamilyTree
             charles.Contacts.Add(william);
             charles.Contacts.Add(henry);
 
-            PrintTree(elizabeth);
+            PrintTree(elizabeth, elizabeth.Name);
             Console.ReadLine();
         }
 
-        static void PrintTree(FamilyMember familyMember)
+        static void PrintTree(FamilyMember familyMember, string name)
         {
-            Console.WriteLine(familyMember.Name);
+            Console.WriteLine(name);
+            name = familyMember.Name;
             foreach (var innerFamilyMember in familyMember.Contacts)
             {
-                PrintTree(innerFamilyMember);
+                name = familyMember.Name  + " - " + innerFamilyMember.Name;
+
+                PrintTree(innerFamilyMember, name);
             }
         }
     }
